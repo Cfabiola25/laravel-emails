@@ -1,18 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegistroController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Redirigir la raíz '/' directamente al formulario de registro
+Route::get('/', [RegistroController::class, 'formulario'])->name('registro.formulario');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/registro', [RegistroController::class, 'formulario'])->name('registro.formulario');
+Route::post('/registro', [RegistroController::class, 'registrar'])->name('registro.registrar');

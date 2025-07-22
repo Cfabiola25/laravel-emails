@@ -106,4 +106,17 @@ return [
         'table' => 'failed_jobs',
     ],
 
+        /*
+    |--------------------------------------------------------------------------
+    | Notificación de errores en correos 
+    |--------------------------------------------------------------------------
+    |
+    | Esta opción define a qué dirección se le notificará cuando un correo
+    | falle. Debe estar definida también en el archivo .env como:
+    | MAIL_FAILURES_TO=proyectando.fesc2025@gmail.com
+    |
+    */
+
+    'mail_failures_to' => env('MAIL_FAILURES_TO', 'proyectando.fesc2025@gmail.com'),
+
 ];

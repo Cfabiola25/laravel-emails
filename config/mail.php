@@ -131,4 +131,6 @@ return [
         ],
     ],
 
+    'failures_to' => env('MAIL_FAILURES_TO', 'proyectando.fesc2025@gmail.com'),
+
 ];
