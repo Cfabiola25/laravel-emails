@@ -1,66 +1,288 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📧 Proyecto Laravel: Envío de Correos Masivos con Gmail SMTP y API REST
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto tiene como objetivo **registrar usuarios desde una API** y **enviar correos personalizados** de forma masiva utilizando **Laravel**, **colas**, **Gmail SMTP** y pruebas con **Postman**. Fue desarrollado como parte de una práctica en la Unidad de Desarrollo de la **FESC**.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Tecnologías Usadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* PHP 8.x
+* Laravel 10.x
+* Laravel Breeze (auth)
+* SMTP Gmail
+* Postman
+* Mailables
+* Laravel Queues (Base de datos)
+* MySQL / Laragon
+* HTML Email Templates
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📁 Estructura del Proyecto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+laravel-emails/
+├── app/
+│   ├── Console/Commands/EnviarCorreosMasivos.php
+│   ├── Http/Controllers/ApiRegistroController.php
+│   └── Mail/NotificacionMasiva.php
+├── resources/
+│   └── views/emails/notificacion.blade.php
+├── public/images/LOGO_PROYECTANDO_OPTIMIZADO.png
+├── routes/
+│   └── api.php
+├── .env
+└── README.md
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Instalación y Configuración
 
-## Laravel Sponsors
+### 1. Crear Proyecto con Laragon
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Menú → Creación Rápida de Sitio Web → Laravel
+**Nombre del Proyecto:** `laravel-emails`
 
-### Premium Partners
+### 2. Abrir Proyecto en VS Code
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+cd laravel-emails
+code .
+```
 
-## Contributing
+### 3. Configurar `.env` para Gmail SMTP
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=proyectando.fesc2025@gmail.com
+MAIL_PASSWORD=snyhyqpgpnygayv
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=proyectando.fesc2025@gmail.com
+MAIL_FROM_NAME="Proyectando FESC"
+```
 
-## Code of Conduct
+⚠️ Activa la verificación en dos pasos y genera una contraseña de aplicación:
+[https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 📨 Plantilla del Correo
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Ruta: `resources/views/emails/notificacion.blade.php`
 
-## License
+```blade
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenido a PROYECTANDO</title>
+</head>
+<body style="font-family: Verdana, Tahoma, sans-serif; background-color: #f3f4f6; padding: 20px; margin: 0;">
+  <div style="max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px;">
+    <img src="{{ asset('images/LOGO_PROYECTANDO_OPTIMIZADO.png') }}" alt="Logo Proyectando" width="250" style="display:block; margin:auto;">
+    <h2 style="color:#1f2937;">¡Hola {{ \$nombre }}!</h2>
+    <p>Te damos la bienvenida al Congreso Académico PROYECTANDO FESC 2025.</p>
+    <p>Conoce nuestros <strong>planes y métodos de pago</strong> accediendo a tu cuenta.</p>
+    <p>Gracias por confiar en nosotros.</p>
+    <p style="color: #6b7280;">— Equipo Proyectando FESC</p>
+  </div>
+</body>
+</html>
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+📌 Imagen del logo: `public/images/LOGO_PROYECTANDO_OPTIMIZADO.png`
+🛑 No usar formato `.webp`
+
+---
+
+## 📧 Clase Mailable
+
+Ruta: `app/Mail/NotificacionMasiva.php`
+
+```php
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+
+class NotificacionMasiva extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public \$nombre;
+
+    public function __construct(\$nombre)
+    {
+        \$this->nombre = \$nombre;
+    }
+
+    public function build()
+    {
+        return \$this->view('emails.notificacion')
+                    ->subject("Bienvenido a PROYECTANDO FESC");
+    }
+}
+```
+
+---
+
+## 🧵 Envío Masivo desde la Base de Datos
+
+### 1. Crear el comando
+
+```bash
+php artisan make:command EnviarCorreosMasivos
+```
+
+### 2. Lógica del comando
+
+Ruta: `app/Console/Commands/EnviarCorreosMasivos.php`
+
+```php
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use App\Models\User;
+use App\Mail\NotificacionMasiva;
+use Illuminate\Support\Facades\Mail;
+
+class EnviarCorreosMasivos extends Command
+{
+    protected \$signature = 'correos:enviar';
+    protected \$description = 'Envía correos masivos personalizados a todos los usuarios';
+
+    public function handle()
+    {
+        \$usuarios = User::all();
+
+        foreach (\$usuarios as \$usuario) {
+            Mail::to(\$usuario->email)->queue(new NotificacionMasiva(\$usuario->name));
+            \$this->info("Correo enviado a: {\$usuario->email}");
+        }
+
+        return Command::SUCCESS;
+    }
+}
+```
+
+### 3. Ejecutar el comando
+
+```bash
+php artisan correos:enviar
+```
+
+---
+
+## 🔗 API REST con Postman
+
+### 1. Ruta de Registro
+
+`routes/api.php`
+
+```php
+use App\Http\Controllers\ApiRegistroController;
+
+Route::post('/registrar', [ApiRegistroController::class, 'store']);
+```
+
+### 2. Controlador de Registro
+
+`app/Http/Controllers/ApiRegistroController.php`
+
+```php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use App\Mail\NotificacionMasiva;
+use Illuminate\Support\Facades\Mail;
+
+class ApiRegistroController extends Controller
+{
+    public function store(Request \$request)
+    {
+        \$usuario = User::create([
+            'name' => \$request->name,
+            'email' => \$request->email,
+            'password' => Hash::make(\$request->password),
+        ]);
+
+        Mail::to(\$usuario->email)->queue(new NotificacionMasiva(\$usuario->name));
+
+        return response()->json(['message' => 'Usuario registrado y correo enviado']);
+    }
+}
+```
+
+### 3. Enviar desde Postman
+
+* **Método:** POST
+* **URL:** `http://127.0.0.1:8000/api/registrar`
+* **JSON Body:**
+
+```json
+{
+  "name": "Nelly Cano",
+  "email": "nellycano800@gmail.com",
+  "password": "12345678"
+}
+```
+
+---
+
+## 📡 Activar Sistema de Colas
+
+### 1. Configurar `.env`
+
+```env
+QUEUE_CONNECTION=database
+```
+
+### 2. Migraciones necesarias
+
+```bash
+php artisan queue:table
+php artisan queue:failed-table
+php artisan migrate
+```
+
+### 3. Iniciar Worker
+
+```bash
+php artisan queue:work
+```
+
+---
+
+## ✅ Recomendaciones Finales
+
+* Ejecutar:
+
+  ```bash
+  php artisan config:clear
+  php artisan cache:clear
+  ```
+
+  después de editar `.env`
+* Verifica que `php artisan serve` esté corriendo
+* Ejecuta `php artisan queue:work` para procesar colas
+* Usa `send()` para envío inmediato o `queue()` para asincrónico
+
+---
+
+## 🧠 Autor
+
+**Nelly Fabiola Cano Oviedo**
+Estudiante de Ingeniería de Software - FESC
+Unidad de Desarrollo - Julio 2025
+
+---
+
+## 📌 Licencia
+
+MIT © 2025 — Proyecto académico para fines educativos y pruebas internas.
