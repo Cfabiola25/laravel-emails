@@ -26,8 +26,17 @@
                 Te damos la bienvenida a <strong>PROYECTANDO</strong>, la plataforma de gestión de eventos de la FESC. Aquí podrás inscribirte, asistir y hacer seguimiento a todos tus eventos.
             </p>
 
-            <p style="font-size: 16px; color: #111827;">
-                Muy pronto recibirás un correo con nuestros planes de pago. ¡Gracias por hacer parte de esta experiencia!
+            <!-- Botón -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="#"
+                   style="background-color: #e90019; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 16px; display: inline-block;">
+                    Ir a la plataforma de eventos
+                </a>
+            </div>
+
+            <!-- Mensaje final -->
+            <p style="font-size: 16px; color: #111827; text-align: center;">
+                ¡Gracias por hacer parte de esta experiencia!
             </p>
 
             <!-- Footer -->
