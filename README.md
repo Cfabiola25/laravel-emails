@@ -61,7 +61,7 @@ MAIL_USERNAME=
 MAIL_PASSWORD=
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=
-MAIL_FROM_NAME
+MAIL_FROM_NAME=
 ```
 
 ⚠️ Activa la verificación en dos pasos y genera una contraseña de aplicación:
@@ -69,11 +69,7 @@ MAIL_FROM_NAME
 
 ---
 
-## 📨 Plantilla del Correo
-
-
-📌 Imagen del logo: `public/images/LOGO_PROYECTANDO_OPTIMIZADO.png`
-🛑 No usar formato `.webp`
+🛑 Para el envio de emails NO usar formato `.webp`
 
 ---
 
@@ -207,8 +203,7 @@ class ApiRegistroController extends Controller
 ```json
 {
   "name": "Nelly Cano",
-  "email": "nellycano800@gmail.com",
-  "password": "12345678"
+  "email": "nellycano800@gmail.com"
 }
 ```
 
@@ -259,6 +254,9 @@ php artisan queue:work
 **Nelly Fabiola Cano Oviedo**
 Estudiante de Ingeniería de Software - FESC
 Unidad de Desarrollo - Julio 2025
+
+**Contacto**
+Linkedin: www.linkedin.com/in/nelis250
 
 ---
 
