@@ -57,11 +57,11 @@ code .
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
-MAIL_USERNAME=proyectando.fesc2025@gmail.com
-MAIL_PASSWORD=snyhyqpgpnygayv
+MAIL_USERNAME=
+MAIL_PASSWORD=
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=proyectando.fesc2025@gmail.com
-MAIL_FROM_NAME="Proyectando FESC"
+MAIL_FROM_ADDRESS=
+MAIL_FROM_NAME
 ```
 
 ⚠️ Activa la verificación en dos pasos y genera una contraseña de aplicación:
@@ -71,27 +71,6 @@ MAIL_FROM_NAME="Proyectando FESC"
 
 ## 📨 Plantilla del Correo
 
-Ruta: `resources/views/emails/notificacion.blade.php`
-
-```blade
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Bienvenido a PROYECTANDO</title>
-</head>
-<body style="font-family: Verdana, Tahoma, sans-serif; background-color: #f3f4f6; padding: 20px; margin: 0;">
-  <div style="max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px;">
-    <img src="{{ asset('images/LOGO_PROYECTANDO_OPTIMIZADO.png') }}" alt="Logo Proyectando" width="250" style="display:block; margin:auto;">
-    <h2 style="color:#1f2937;">¡Hola {{ \$nombre }}!</h2>
-    <p>Te damos la bienvenida al Congreso Académico PROYECTANDO FESC 2025.</p>
-    <p>Conoce nuestros <strong>planes y métodos de pago</strong> accediendo a tu cuenta.</p>
-    <p>Gracias por confiar en nosotros.</p>
-    <p style="color: #6b7280;">— Equipo Proyectando FESC</p>
-  </div>
-</body>
-</html>
-```
 
 📌 Imagen del logo: `public/images/LOGO_PROYECTANDO_OPTIMIZADO.png`
 🛑 No usar formato `.webp`
